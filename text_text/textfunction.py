@@ -48,7 +48,7 @@ Prioritize formal translations for languages like Russian, Ukrainian, Romanian, 
             HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
         },
     )
-    tweet_chain = LLMChain(llm=llm, prompt=tweet_prompt, verbose=True)
+    tweet_chain = LLMChain(llm=llm, prompt=tweet_prompt, verbose=False)
     response = tweet_chain.run(topic=topic)
     
     return response
