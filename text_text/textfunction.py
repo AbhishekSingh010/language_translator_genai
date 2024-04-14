@@ -16,12 +16,24 @@ api_key=os.environ.get('GOOGLE_API_KEY')
 
 
 
+import os
+from langchain_google_genai import (
+    ChatGoogleGenerativeAI,
+    HarmBlockThreshold,
+    HarmCategory,
+)
+from dotenv import load_dotenv
+from prompt_templates import PromptTemplate
+
 def content_creation(lang, topic):
     if lang is None or topic is None:
         return "Please select a language and enter a topic."
     
-    load_dotenv()
-    api_key=os.environ.get('GOOGLE_API_KEY')
+    load_dotenv()  # Assuming you're using dotenv to load environment variables
+    api_key = os.environ.get('GOOGLE_API_KEY')
+    
+    if api_key is None:
+        raise ValueError("Google API key not found in environment variables")
     
     tweet_prompt = PromptTemplate.from_template(f"""
                                                 if translation not possible give sentence not possible in english  
@@ -29,17 +41,18 @@ Translate the word '{topic}' into {lang}. use any cultural or regional meanings 
 give one formal translation. For other languages, provide  formal  translations if applicable if not then informal .
 Prioritize formal translations for languages like Russian, Ukrainian, Romanian, Czech, and Bulgarian.""")
 
-    google_api_key = api_key 
-    print(google_api_key)
-    
-    if google_api_key is None:
-        raise ValueError("Google API key not found in environment variables")
-
-    llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=google_api_key)
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-pro",
+        google_api_key=api_key,
+        safety_settings={
+            HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+        },
+    )
     tweet_chain = LLMChain(llm=llm, prompt=tweet_prompt, verbose=True)
     response = tweet_chain.run(topic=topic)
     
     return response
+
     
 
 
