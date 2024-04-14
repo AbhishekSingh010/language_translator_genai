@@ -46,8 +46,8 @@ def run_image_to_text_translation():
     # Input prompt and image upload
     language_names = [
         "English", "Chinese", "Spanish", "French", "Russian", "Arabic", "Hindi", "Bengali",
-        "Portuguese", "Urdu", "Indonesian", "German", "Japanese", "Swahili", "Telugu", "Marathi",
-        "Tamil", "Turkish", "Vietnamese", "Korean", "Italian", "Filipino", "Thai", "Yoruba",
+        "Portuguese", "Urdu", "Indonesian", "German", "Japanese", "Swahili",  "Marathi",
+         "Turkish", "Vietnamese", "Korean", "Italian", "Filipino", "Thai", "Yoruba",
         "Malayalam", "Sindhi", "Punjabi", "Ukrainian", "Romanian", "Dutch", "Pashto", "Kannada",
         "Odia", "Malay", "Nepali", "Greek", "Hungarian", "Czech", "Bulgarian"
     ]
