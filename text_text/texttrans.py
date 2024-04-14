@@ -22,7 +22,7 @@ def lang_translation():
 
    
    
-    st.title("Text to Translation")
+    # st.title("Text to Translation")
 
     title_html = """
         <div style="background: linear-gradient(to right, #FFC600, #FD6E6A); -webkit-background-clip: text;
