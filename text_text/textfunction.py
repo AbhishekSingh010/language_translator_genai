@@ -23,12 +23,12 @@ def content_creation(lang, topic):
     load_dotenv()
     api_key=os.environ.get('GOOGLE_API_KEY')
     
-    tweet_prompt = PromptTemplate.from_template(f"""only translated text Translate the following word into {lang} and provide an explanation or context for understanding: '{topic}'. If the word has a specific cultural or regional meaning.
+    tweet_prompt = PromptTemplate.from_template(f"""only translated text Translate the following word into {lang} : '{topic}'. If the word has a specific cultural or regional meaning.
  If the target language is complex (e.g., Tamil, Telugu, Greek, Hungarian, Czech, and Bulgarian) provide only one formal translation.
 Otherwise, provide multiple translations, including formal and informal options if applicable.
 Here are some additional considerations based on the target language:
-For languages like Russian, Ukrainian, Romanian, Czech, and Bulgarian, prioritize formal translations.
-in responce i want only lang translation not other thing also satisfy all the condition mentioned""")
+For languages like Russian, Ukrainian, Romanian, Czech, and Bulgarian,tami.telugu prioritize formal translations.
+in responce i want only language translation not other thing also satisfy all the condition  mentioned in previous lines""")
 
     google_api_key = api_key 
     print(google_api_key)
