@@ -7,6 +7,12 @@ from langchain.chains import LLMChain
 from gtts import gTTS
 from pydub import AudioSegment
 from io import BytesIO
+from langchain_google_genai import (
+    ChatGoogleGenerativeAI,
+    HarmBlockThreshold,
+    HarmCategory,
+)
+
 # from function import content_creation
 
 # Load environment variables
@@ -16,14 +22,8 @@ api_key=os.environ.get('GOOGLE_API_KEY')
 
 
 
-import os
-from langchain_google_genai import (
-    ChatGoogleGenerativeAI,
-    HarmBlockThreshold,
-    HarmCategory,
-)
-from dotenv import load_dotenv
-from prompt_templates import PromptTemplate
+
+
 
 def content_creation(lang, topic):
     if lang is None or topic is None:
