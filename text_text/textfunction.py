@@ -46,6 +46,9 @@ Prioritize formal translations for languages like Russian, Ukrainian, Romanian, 
         google_api_key=api_key,
         safety_settings={
             HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+            HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+            HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+            HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
         },
     )
     tweet_chain = LLMChain(llm=llm, prompt=tweet_prompt, verbose=False)
